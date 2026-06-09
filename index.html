@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>VORTEX PROXY V1</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body oncontextmenu="return false;"> <div id="login-container">
-        <h1>VORTEX PROXY V1</h1>
-        <input type="text" id="user" placeholder="Usuário">
-        <input type="password" id="pass" placeholder="Senha">
-        <button onclick="validar()">ENTRAR</button>
-    </div>
+<html>
+<body>
+    <button onclick="AndroidBridge.iniciarVortex()">CONECTAR PROXY</button>
     
     <script>
-        document.onkeydown = (e) => {
-            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73)) return false;
-        };
+        // Esta função envia o comando para o seu App Android
+        function iniciarVortex() {
+            if (typeof AndroidBridge !== "undefined") {
+                AndroidBridge.iniciarVortex();
+            } else {
+                alert("Erro: O App não está conectado ao sistema.");
+            }
+        }
     </script>
-    <script src="js/main.js"></script>
 </body>
 </html>
